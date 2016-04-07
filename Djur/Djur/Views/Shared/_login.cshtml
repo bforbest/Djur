@@ -1,0 +1,23 @@
+﻿@{string username = (string)Session["username"];
+    bool IsLoggedIn = (bool)Session["LoginStatus"];
+    }
+@if (IsLoggedIn)
+{
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+               <a href="/login" >Hello @username</a> 
+            </li>
+            <li><form action="/Login/Index" method="post">
+    <button type="submit" name="logoutButton">Logga ut</button>
+</form></li>
+        </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

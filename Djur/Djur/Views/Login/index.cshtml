@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    bool IsLoggedIn = (bool)Session["LoginStatus"];
+    bool IsAdmin = (bool)Session["Admin"];
+}
+
+<h2>Index</h2>
+
+@if (!IsLoggedIn)
+{
+    <div class="container">
+        <form action="/Login/Index" method="post">
+            <div class="row">
+                <label class="col-md-6" for="username">Användarnamn:</label>
+                <input class="col-md-6" type="text" name="username"
+                       placeholder="Namn" value="@Request["username"]" />
+            </div>
+            <div class="row">
+                <label class="col-md-6" for="password">Lösenord:</label>
+                <input class="col-md-6" type="text" name="password"
+                       value="@Request["password"]" />
+            </div>
+            <button type="submit" class="btn">Logga in</button>
+        </form>
+    </div>
+}
+else
+{
+    string username = (string)Session["username"];
+    <p>Du är inloggad som: <strong>@username</strong></p>
+    <p><a href="/Secure/Index">Säkra sidan</a></p>
+    <form action="/Login/Index" method="post">
+        <button type="submit" name="logoutButton">Logga ut</button>
+    </form>
+}
+@if (IsAdmin)
+{
+    <p>Du är inloggad som <strong>admin</strong></p>
+    <p><a href="/Admin/">Lägg till, ändra eller updatera djur</a></p>
+}
