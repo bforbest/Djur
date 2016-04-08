@@ -3,13 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -50,7 +44,7 @@
         </tr>
     }
 
-</table>
+</table>*@
 <div class="row">
     @foreach (var item in Model)
     {

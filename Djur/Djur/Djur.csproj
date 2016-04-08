@@ -140,6 +140,7 @@
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Shared\_login.cshtml" />
     <Content Include="Views\Djur\Details.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

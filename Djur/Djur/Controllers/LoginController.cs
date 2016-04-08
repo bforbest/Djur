@@ -1,11 +1,11 @@
-﻿using MvcLoginDemo.Models;
+﻿using Djur.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MvcLoginDemo.Controllers
+namespace Djur.Controllers
 {
     public class LoginController : Controller
     {
@@ -52,6 +52,22 @@ namespace MvcLoginDemo.Controllers
                 // business as usual
             }
             return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(UserModel user)
+        {
+            List<UserModel> defaultUsers = UserModel.DefaultUsers();
+            if (ModelState.IsValid)
+            {
+                var userob = new UserModel() { Name = user.Name, Password = user.Password, Admin = false };
+                defaultUsers.Add(userob);
+                return RedirectToAction("Index", "Login");
+            }
+            return View(user);
         }
 
     }
