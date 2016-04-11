@@ -9,7 +9,7 @@ namespace Djur.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        // GET: Logini
         public ActionResult Index()
         {
             string username = Request["username"];
