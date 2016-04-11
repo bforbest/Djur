@@ -1,23 +1,36 @@
 ﻿@{string username = (string)Session["username"];
     bool IsLoggedIn = (bool)Session["LoginStatus"];
     }
-@if (IsLoggedIn)
-{
+<ul class="nav navbar-nav navbar-right">
+    @if (IsLoggedIn)
+    {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-               <a href="/login" >Hello @username</a> 
-            </li>
-            <li><form action="/Login/Index" method="post">
-    <button type="submit" name="logoutButton">Logga ut</button>
-</form></li>
-        </ul>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
+
+        <li>
+            <a href="/login">Hello @username</a>
+        </li>
+        <li>
+            <form action="/Login/Index" method="post">
+                <button class="btn btn-default form-control navbar-btn" type="submit" name="logoutButton">Logga ut</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        
         <li>@Html.ActionLink("Register", "Register", "Login", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Index", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+
+    }
+    <li>
+        <form class="navbar-form" action="/Search" method="post">
+            <div class="input-group pull-right" style="width:150px">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                <input name="SearchString" type="text" class="form-control" placeholder="Search for...">
+            </div><!-- /input-group -->
+        </form>
+    </li>
+</ul>
