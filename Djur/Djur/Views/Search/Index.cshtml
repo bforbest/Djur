@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Djur.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Title: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+    <p>@Html.DisplayFor(modelItem => item.Title) </p>
+        @Html.DisplayFor(modelItem => item.Price)
+    }
+}
+
