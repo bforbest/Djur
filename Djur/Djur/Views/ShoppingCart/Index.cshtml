@@ -1,0 +1,53 @@
+﻿@model Djur.ViewModels.ShoppingCartView
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            <p>Name</p>
+        </th>
+        <th>
+            <p>Price</p>
+                </th>
+        <th>
+            <p>Amount</p>
+        </th>
+        <th>
+            <p>Image</p>
+        </th>
+    </tr>
+
+    @foreach (var item in Model.ShoppingCartItems)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.Price)
+            </td>
+            <td>
+                @using (Html.BeginForm("Addtocart", "ShoppingCart", FormMethod.Get))
+                {
+                    @Html.TextBoxFor(model => item.Amount, new { @name = "id" })
+                    @Html.HiddenFor(model => item.id);
+                    <button type="submit">Update</button>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.ImageUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Remove", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.DisplayFor(model => model.CartTotal);

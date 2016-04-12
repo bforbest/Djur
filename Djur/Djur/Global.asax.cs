@@ -33,6 +33,7 @@ namespace Djur
                 new Product() { ProductID=8,Title = "Giant Papillon", Amount = 1, ImageUrl="http://vetbook.org/wiki/rabbit/images/4/42/Giant_Papillon.jpg", Price = 300, Category="Rabbits" },
                 new Product() { ProductID=8,Title = "Czech Red", Amount = 1,  ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/20/52/99/205299943204c6aa0826012f83b3c416.jpg", Price = 300, Category="Rabbits" }
             };
+            Session["ShoppingCartList"] = new ShoppingCart() { };
         }
     }
 }
