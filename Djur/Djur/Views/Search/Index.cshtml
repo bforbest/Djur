@@ -19,8 +19,10 @@
 {
     foreach (var item in Model)
     {
-    <p>@Html.DisplayFor(modelItem => item.Title) </p>
-        @Html.DisplayFor(modelItem => item.Price)
+    <p><strong>@Html.DisplayFor(modelItem => item.Title) </strong> </p>
+        <p>Price: @Html.DisplayFor(modelItem => item.Price) kr</p>
+        <a href = "/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" /></a>
+        <p>@Html.ActionLink("Addtocart", "Addtocart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)</p>
     }
 }
 

@@ -4,9 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
+@*<div>
     <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -35,12 +33,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            @Html.DisplayFor(model => model.ImageUrl)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
+            <img src = "@Model.ImageUrl" />
+        </dd>        
 
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -55,4 +53,22 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-6 col-xs-2 col-lg-10">
+            <h3>@Model.Title</h3>
+            <h4>Price: @Model.Price</h4>
+        </div>
+
+        <div class="col-md-3">
+            <h4>Description</h4>
+            <p>@Model.Description</p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src="@Model.ImageUrl" />
+        </div>
+        
+    </div>
+</div>
