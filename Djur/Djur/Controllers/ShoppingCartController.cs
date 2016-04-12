@@ -62,26 +62,6 @@ namespace Djur.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult RemoveToCart(int id, int amount)
-        {
-            var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
-            var products = (List<Product>)Session["lista"];
-            var item = products.Where(x => x.ProductID == id).First();
-            var tempItem = shoppingCart.GetCartItems().Find(x => x.id == id);
-            if (tempItem == null)
-            {
-                ShoppingCartItem cartItem = new ShoppingCartItem() { Amount = amount, id = id, product = item };
-                shoppingCart.RemoveFromCart(cartItem);
-            }
-            else
-            {
-                tempItem.Amount -= amount;
-            }
-
-
-            return RedirectToAction("Index");
-        }
-
     }
 
 }
