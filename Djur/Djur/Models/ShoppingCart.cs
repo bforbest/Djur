@@ -26,9 +26,18 @@ namespace Djur.Models
         {
             return items;
         }
-        public void RemoveFromCart(int id)
+        public void RemoveFromCart(ShoppingCartItem shoppingCartItem)
         {
-
+            ShoppingCartItem item = null;
+            //Kolla om varan finns redan med på kundvagnen
+            if (items != null)
+            {
+                item = items.Where(x => x.id == shoppingCartItem.id).FirstOrDefault();
+            }
+            if (item == null)
+            {
+                items.Remove(shoppingCartItem);
+            }
         }
         public void EmptyCart()
         {

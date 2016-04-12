@@ -20,7 +20,7 @@ namespace Djur
             Session["LoginStatus"] = false;
             Session["Admin"] = false;
             Session["lista"] = new List<Product>() {
-                new Product() {ProductID=1,  Title = "English Shepherd", Amount = 1, ImageUrl="http://yupdaily.com/wp-content/uploads/2015/10/kfuh-kuvasz.jpg", Price = 7000, Category = "Dogs" },
+                new Product() { ProductID=1,Title = "English Shepherd", Amount = 1, ImageUrl="http://yupdaily.com/wp-content/uploads/2015/10/kfuh-kuvasz.jpg", Price = 7000, Category = "Dogs" },
                 new Product() { ProductID=2,Title = "Kuvasz", Amount = 1,  ImageUrl="https://englishshepherd.files.wordpress.com/2010/03/picture-008-bess-5x7.jpg", Price = 300 },
                 new Product() { ProductID=3,Title = "Siberian Husky", Amount = 1,  ImageUrl="http://www.dogtemperament.com/wp-content/uploads/2013/02/siberian-husky.jpg", Price = 300 },
                 new Product() { ProductID=4,Title = "Teacup Pomeranian", Amount = 1, ImageUrl="https://s-media-cache-ak0.pinimg.com/736x/2b/8d/0f/2b8d0fe811c08dc3eb9f03b6668f6522.jpg", Price = 300 },
