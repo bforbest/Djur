@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Djur.Models.Product>
 
 @{
+    bool IsLoggedIn = (bool)Session["LoginStatus"];
     ViewBag.Title = "Index";
 }
 
@@ -10,54 +11,99 @@
     {
         if (item.Category == "Dogs")
         {
+
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="thumbnail">
-                    <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)"style="height:140px; width:100%;"></a>
+                    <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl) " alt="@Html.DisplayFor(modelItem => item.Title)" style="height:140px; width:100%;" onError="this.src = 'http://placehold.it/600x400/?text=@item.Title.Split(' ').First()';"></a>
                     <div class="caption">
                         <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                        
-                        @Html.ActionLink("Add to cart", "Add to cart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                        <h6>Price: @item.Price</h6>
+                        @if (IsLoggedIn)
+                        {
+                            @Html.ActionLink("Add to cart", "Addtocart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                        }
                     </div>
                 </div>
             </div>
 
+
         }
     }
+</div>
     <h3>Cats</h3>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            if (item.Category == "Cats")
+            {
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)" style="height:140px; width:100%;" onError="this.src = 'http://placehold.it/600x400/?text=@item.Title.Split(' ').First()';"></a>
+                        <div class="caption">
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                            <h6>Price: @item.Price</h6>
+                            @if (IsLoggedIn)
+                            {
+                                @Html.ActionLink("Add to cart", "Addtocart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+    <h3>Rabbits</h3>
+    <div class="row">
+        
+        @foreach (var item in Model)
+        {
+            if (item.Category == "Rabbits")
+            {
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)" style="height:140px; width:100%;" onError="this.src = 'http://placehold.it/600x400/?text=@item.Title.Split(' ').First()';"></a>
+                        <div class="caption">
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                            <h6>Price: @item.Price</h6>
+                            @if (IsLoggedIn)
+                            {
+                                @Html.ActionLink("Add to cart", "Addtocart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        }
+    </div>
+<h3>Others</h3>
+<div class="row">
+
     @foreach (var item in Model)
     {
-
-        if (item.Category == "Cats")
+        if (item.Category == "Others")
         {
 
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="thumbnail">
-                   <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)" style="height:140px; width:100%;"></a> 
+                    <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)" style="height:140px; width:100%;" onError="this.src = 'http://placehold.it/600x400/?text=@item.Title.Split(' ').First()';"></a>
                     <div class="caption">
                         <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                        
-                        @Html.ActionLink("Add to cart", "Add to cart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                        <h6>Price: @item.Price</h6>
+                        @if (IsLoggedIn)
+                        {
+                            @Html.ActionLink("Add to cart", "Addtocart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
+                        }
                     </div>
                 </div>
             </div>
 
         }
-    }
 
-<h3>Rabbits</h3>
-@foreach (var item in Model) { 
-if (item.Category == "Rabbits")
-{
-            <div class="col-xs-12 col-sm-4 col-md-3">
-                <div class="thumbnail">
-                    <a href="/Djur/Details/@Html.DisplayFor(modelItem => item.ProductID)"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Title)"style="height:140px; width:100%;"></a>
-                    <div class="caption">
-                        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                        @Html.ActionLink("Add to cart", "Add to cart", "ShoppingCart", new { id = @item.ProductID, amount = 1 }, null)
-                    </div>
-                </div>
-            </div>
-        }
-       
     }
 </div>

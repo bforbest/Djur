@@ -34,7 +34,11 @@
             </div><!-- /input-group -->
         </form>
     </li>
+@if (IsLoggedIn)
+{
+
     <li>
         <a href="ShoppingCart" class="btn btn-info navbar-btn" style="padding-top: 6px; padding-bottom: 6px;"><span class="badge">@CartCount</span> <span class="glyphicon glyphicon-shopping-cart"></span></a>
     </li>
+}
 </ul>

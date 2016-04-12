@@ -42,7 +42,7 @@
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-edit"> Update</span></button>
                         </span>
-                        <input name="amount" type="number" class="form-control" value="@item.Amount" max="@item.product.Amount" min=0>
+                        <input name="amount" type="number" class="form-control" value="@item.Amount" max="@item.product.Amount" min=0 data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amound field is required." required>
                         <input class="form-control" type="hidden" name="id"
                                value="@item.id" />
                     </div><!-- /input-group -->

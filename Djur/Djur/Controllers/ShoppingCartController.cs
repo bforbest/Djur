@@ -13,6 +13,7 @@ namespace Djur.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            //ShoppingCartview är för att kunna visa totalpris och shoppingcartitems
             ShoppingCartView cartView = new ShoppingCartView();
             var products = (ShoppingCart) Session["ShoppingCartList"];
             cartView.ShoppingCartItems = products.GetCartItems();
@@ -24,17 +25,29 @@ namespace Djur.Controllers
         {
             var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
             var products = (List<Product>)Session["lista"];
+            //hämta det första produkt som har productId = id
             var item = products.Where(x => x.ProductID == id).First();
+            //Hämta samma produkt från shoppingCart
             var tempItem = shoppingCart.GetCartItems().Find(x => x.id == id);
+            //Om varan ej finns i shoppingcart skapa en ny ShopingCartItem
+            //amount är alltid lika med 1 första gången
             if (tempItem==null)
             {
-               
                 ShoppingCartItem cartItem = new ShoppingCartItem() { Amount = amount, id = id, product = item };
                 shoppingCart.AddToCart(cartItem);
             }
             else
             {
-                tempItem.Amount+=amount;
+                //kolla om antalet på ShoppingCartItem är mindra än antalet i lager
+                if (item.Amount < amount)
+                {
+                   //do something is not in stock
+                }
+                else
+                {
+                    tempItem.Amount += amount;
+                }
+                
             }
             Session["CountCart"] = shoppingCart.GetCartItems().Count();
             return RedirectToAction("Index");
