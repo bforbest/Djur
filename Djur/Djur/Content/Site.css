@@ -23,3 +23,8 @@ textarea {
     max-height: 120px;
     background-position: center left;
 }
+
+.fixedPic>img {
+    height: 71px;
+    width: 121px;
+}

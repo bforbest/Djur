@@ -28,11 +28,11 @@ namespace Djur.Models
         }
         public void RemoveFromCart(int id)
         {
-
+            items.Remove(items.Where(x => x.id == id).First());
         }
         public void EmptyCart()
         {
-
+            items.Clear();
         }
         public decimal GetTotal()
         {
@@ -42,6 +42,10 @@ namespace Djur.Models
                 sum += item.Amount * item.product.Price;
             }
             return sum;
+        }
+        public void UpdateCart(int id, int amount)
+        {
+            items.Where(x => x.id == id).First().Amount = amount;
         }
     }
 }

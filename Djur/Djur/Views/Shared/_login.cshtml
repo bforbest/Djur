@@ -1,5 +1,6 @@
 ﻿@{string username = (string)Session["username"];
     bool IsLoggedIn = (bool)Session["LoginStatus"];
+    int CartCount = (int)Session["CountCart"];
     }
 <ul class="nav navbar-nav navbar-right">
     @if (IsLoggedIn)
@@ -32,5 +33,8 @@
                 <input name="SearchString" type="text" class="form-control" placeholder="Search for...">
             </div><!-- /input-group -->
         </form>
+    </li>
+    <li>
+        <a href="ShoppingCart" class="btn btn-info navbar-btn" style="padding-top: 6px; padding-bottom: 6px;"><span class="badge">@CartCount</span> <span class="glyphicon glyphicon-shopping-cart"></span></a>
     </li>
 </ul>

@@ -28,6 +28,7 @@ namespace Djur.Controllers
             var tempItem = shoppingCart.GetCartItems().Find(x => x.id == id);
             if (tempItem==null)
             {
+               
                 ShoppingCartItem cartItem = new ShoppingCartItem() { Amount = amount, id = id, product = item };
                 shoppingCart.AddToCart(cartItem);
             }
@@ -35,8 +36,29 @@ namespace Djur.Controllers
             {
                 tempItem.Amount+=amount;
             }
-            
-            
+            Session["CountCart"] = shoppingCart.GetCartItems().Count();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Removefromcart(int id)
+        {
+            var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
+            shoppingCart.RemoveFromCart(id);
+            Session["CountCart"] = shoppingCart.GetCartItems().Count();
+            return RedirectToAction("Index");
+        }
+        public ActionResult EmptyCart()
+        {
+            var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
+            shoppingCart.EmptyCart();
+            Session["CountCart"] = shoppingCart.GetCartItems().Count();
+            return RedirectToAction("Index");
+        }
+        public ActionResult UpdateCart()
+        {
+            var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
+            int id = Int32.Parse(Request.Form["id"]);
+            int amount = Int32.Parse(Request.Form["amount"]);
+            shoppingCart.UpdateCart(id, amount);
             return RedirectToAction("Index");
         }
         
