@@ -1,6 +1,18 @@
-﻿body {
+﻿.thumbnail {
+    width: 200px;
+    height: 250px;
+}
+h3 {
+    margin-left: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+body {
     padding-top: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;  
+    background-size: cover;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,12 +28,14 @@ textarea {
     max-width: 280px;
 }
 .header {
-    background-image: url(http://www.thekennelclub.org.uk/image/base/bg-header-website-2012.jpg);
+    /*background-image: url(http://cliparts.co/cliparts/dT9/KpX/dT9KpXaGc.png);*/
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     min-height: 120px;
     max-height: 120px;
-    background-position: center left;
+
+  
+   
 }
 
 .fixedPic>img {

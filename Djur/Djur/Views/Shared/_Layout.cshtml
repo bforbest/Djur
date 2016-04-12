@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Djur</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <a href="/"><img src="http://www.thekennelclub.org.uk/image/base/bg-header-website-2012.jpg" /></a>
-        </div>
-        <div class="navbar navbar-default container">
+        <section class="header">
+            <a href="/"><img src="http://cliparts.co/cliparts/dT9/KpX/dT9KpXaGc.png" /></a>
+        </section>
+        <nav class="navbar navbar-default container">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,13 +32,13 @@
                     @Html.Partial("_login")
                 </div>
             </div>
-        </div>
+        </nav>
 
         <div class="container body-content">
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - Djur Shop</p>
+                <p>&copy; @DateTime.Now.Year - DjurShop</p>
             </footer>
         </div>
     </div>
