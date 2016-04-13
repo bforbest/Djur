@@ -27,16 +27,25 @@ namespace Djur.Controllers
                         {
                             Session["LoginStatus"] = true;
                             Session["username"] = username;
-                        }
-                        if (u.Admin)
-                        {
-                            Session["Admin"] = true;
+                            if (u.Admin)
+                            {
+                                Session["Admin"] = true;
+                            }
+                            else
+                            {
+                                Session["Admin"] = false;
+                            }
                         }
                         else
                         {
-                            Session["Admin"] = false;
+                            ViewBag.AdminMessage = "Username or password wrong";
                         }
+                        
                         break;
+                    }
+                    else
+                    {
+                        ViewBag.AdminMessage = "Username or password wrong";
                     }
                 }
             }
@@ -46,6 +55,9 @@ namespace Djur.Controllers
                 Session["LoginStatus"] = false;
                 Session["username"] = null;
                 Session["Admin"] = false;
+                var shoppingCart = (ShoppingCart)Session["ShoppingCartList"];
+                shoppingCart.EmptyCart();
+               
             }
             else
             {

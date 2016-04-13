@@ -16,14 +16,14 @@ namespace Djur.Models
             {
                 new UserModel()
                 {
-                    Name = "david",
-                    Password = "12345678",
+                    Name = "ali",
+                    Password = "12345",
                     Admin = false
                 },
                 new UserModel()
                 {
-                    Name="tomten",
-                    Password="godjul",
+                    Name="alex",
+                    Password="pass",
                     Admin = true
                 }
             };
